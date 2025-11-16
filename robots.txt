@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://elite-gym-navy.vercel.app/sitemap.xml
