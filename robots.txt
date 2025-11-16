@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gym-beige-two.vercel.app/sitemap.xml
+Sitemap: https://elite-gym-navy.vercel.app/sitemap.xml
