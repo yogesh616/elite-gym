@@ -26,7 +26,7 @@ function Contact() {
         <title>Contact | Elite Gym Bharatpur — Hours, Map, Phone, WhatsApp</title>
         <meta name="description" content="Contact Elite Gym Bharatpur. View timings, address, WhatsApp/call links and location map. Copy directions and reach out via our simple inquiry form." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://your-vercel-app-url/contact" />
+        <link rel="canonical" href="https://elite-gym-navy.vercel.app/contact" />
       </Helmet>
 
       <h1 className="text-white text-3xl font-bold mb-8" id="contact-heading">Contact & Timings</h1>
