@@ -1,4 +1,4 @@
-import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "../hooks/useInterSectionObserver";
 
 const galleryImgs = [
   "/assets/gallery1.jpg",
