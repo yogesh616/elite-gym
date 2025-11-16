@@ -42,7 +42,7 @@ function Supplements() {
         <title>Supplements | Elite Gym Bharatpur — Buy Original Protein & Fat Burner</title>
         <meta name="description" content="Shop certified supplements at Elite Gym Bharatpur. ON Whey, MuscleBlaze Creatine, GNC Fat Burners are available direct at the gym. All products are authentic and sourced directly." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://your-vercel-app-url/supplements" />
+        <link rel="canonical" href="https://elite-gym-navy.vercel.app/supplements" />
       </Helmet>
 
       <h1 className="text-white text-3xl font-bold mb-8 text-center tracking-tight" id="supplements-heading">
