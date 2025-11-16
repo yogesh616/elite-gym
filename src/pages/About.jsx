@@ -36,7 +36,7 @@ function About() {
         <title>About | Elite Gym Bharatpur - Trainers & Facilities</title>
         <meta name="description" content="Meet the Elite Gym trainers, explore our high-end facilities, and discover the philosophy that delivers transformation for serious fitness seekers in Bharatpur." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://your-vercel-app-url/about" />
+        <link rel="canonical" href="https://elite-gym-navy.vercel.app/about" />
       </Helmet>
 
       <section className="mb-10" itemProp="description">
