@@ -41,12 +41,12 @@ function HeroBanner() {
         <title>Elite Gym Bharatpur | Push Beyond Limits</title>
         <meta name="description" content="Elite Gym Bharatpur: Modern fitness gym with top trainers and transformation stories. Join now for world-class workouts and community." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://your-vercel-app-url/" />
+        <link rel="canonical" href="https://elite-gym-navy.vercel.app/" />
         {/* OpenGraph for rich sharing */}
         <meta property="og:title" content="Elite Gym Bharatpur | Push Beyond Limits" />
         <meta property="og:description" content="Elite Gym Bharatpur: Modern fitness gym with top trainers and transformation stories. Join now for world-class workouts and community." />
         <meta property="og:image" content={heroImages[0].src} />
-        <meta property="og:url" content="https://your-vercel-app-url/" />
+        <meta property="og:url" content="https://elite-gym-navy.vercel.app/" />
         <meta property="og:type" content="website" />
       </Helmet>
       <AnimatePresence initial={false}>
