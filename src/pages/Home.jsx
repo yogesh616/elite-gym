@@ -58,7 +58,7 @@ function Home() {
         <title>Elite Gym Bharatpur | Modern Fitness Training, Transformation, Top Trainers</title>
         <meta name="description" content="Elite Gym Bharatpur: The #1 gym for athletes and transformation. Modern facilities, certified trainers, client stories, supplement counter, and quick contact. Start your fitness journey here." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://your-vercel-app-url/" />
+        <link rel="canonical" href="https://elite-gym-navy.vercel.app/" />
         {/* You can add OpenGraph/Twitter meta if you want rich sharing */}
       </Helmet>
       <AnimatePresence>
