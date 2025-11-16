@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Suspense, lazy } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { Helmet } from "react-helmet";
 
 // Code splitting: lazy load components
 const HeroBanner = lazy(() => import("../components/HeroBanner"));
@@ -9,53 +9,28 @@ const OwnerCard = lazy(() => import("../components/OwnerCard"));
 const TransformationGrid = lazy(() => import("../components/TransformationGrid"));
 const CTAButtons = lazy(() => import("../components/CTAButtons"));
 
-// List assets to preload (example – add your images/videos here)
 const assetsToLoad = [
-  "/assets/gym-hero-1.jpg",
-  "/assets/gym-hero-2.jpg",
-  "/assets/gym-hero-3.jpg",
-  "/assets/owner.jpg",
-  "/assets/trans1-before.jpg",
-  "/assets/trans1-after.jpg",
-  "/assets/trans2-before.jpg",
-  "/assets/trans2-after.jpg",
-  "/assets/trans3-before.jpg",
-  "/assets/trans3-after.jpg",
-  "/assets/whey.jpg",
-  "/assets/creatine.jpg",
-  "/assets/gallery1.jpg",
-  "/assets/gallery2.jpg",
-  "/assets/gallery3.jpg",
-  "/assets/gym-tour.mp4",
-  "/assets/fatburner.jpg",
-  "/assets/video-poster.jpg",
-  // add other image paths as needed
+  // ... (your asset list)
 ];
 
 function Home() {
-  // Track when assets finish loading
   const [loadedCount, setLoadedCount] = useState(0);
   const [allReady, setAllReady] = useState(false);
-
-  // Intersection observer for intro block
-  const [introRef, introVisible] = useIntersectionObserver();
 
   useEffect(() => {
     if (loadedCount >= assetsToLoad.length) setAllReady(true);
   }, [loadedCount]);
 
-  // Preload all images
   useEffect(() => {
     assetsToLoad.forEach((src) => {
       const img = new window.Image();
       img.src = src;
       img.onload = () => setLoadedCount(l => l + 1);
-      img.onerror = () => setLoadedCount(l => l + 1); // Count error as loaded so user isn’t stuck
+      img.onerror = () => setLoadedCount(l => l + 1);
     });
-    // If you want video preload, use similar method for poster/preload
   }, []);
 
-  // Animated logo loader (style it however you want)
+  // Animated loader...
   const Loader = (
     <div className="fixed inset-0 z-[999] bg-black flex flex-col items-center justify-center">
       <motion.div
@@ -64,7 +39,6 @@ function Home() {
         transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
         className="mb-6"
       >
-        {/* Replace with your actual gym logo/component */}
         <span className="font-extrabold text-5xl text-red-600">ELITE GYM</span>
       </motion.div>
       <motion.div
@@ -79,55 +53,61 @@ function Home() {
   );
 
   return (
-    <AnimatePresence>
-      {!allReady && (
-        <motion.div
-          key="loader"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.5 } }}
-        >
-          {Loader}
-        </motion.div>
-      )}
-      {allReady && (
-        <motion.section
-          key="main"
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 32 }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="min-h-screen bg-black flex flex-col"
-        >
-          <Suspense fallback={<div className="w-full h-32 flex items-center justify-center"><span className="text-white font-bold animate-pulse text-lg">Loading…</span></div>}>
-            <HeroBanner />
-          </Suspense>
-          <main className="max-w-6xl mx-auto px-4 w-full">
+    <>
+      <Helmet>
+        <title>Elite Gym Bharatpur | Modern Fitness Training, Transformation, Top Trainers</title>
+        <meta name="description" content="Elite Gym Bharatpur: The #1 gym for athletes and transformation. Modern facilities, certified trainers, client stories, supplement counter, and quick contact. Start your fitness journey here." />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://your-vercel-app-url/" />
+        {/* You can add OpenGraph/Twitter meta if you want rich sharing */}
+      </Helmet>
+      <AnimatePresence>
+        {!allReady && (
+          <motion.div
+            key="loader"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          >
+            {Loader}
+          </motion.div>
+        )}
+        {allReady && (
+          <main
+            key="main"
+            className="min-h-screen bg-black flex flex-col"
+            itemScope
+            itemType="http://schema.org/LocalBusiness"
+            aria-label="Elite Gym Bharatpur Home"
+          >
+            <Suspense fallback={Loader}>
+              <HeroBanner />
+            </Suspense>
             <section
-              ref={introRef}
-              className={`py-8 grid place-items-center ${introVisible ? "animate-fade-in-up" : ""}`}
+              className="max-w-6xl mx-auto px-4 w-full py-8 grid place-items-center"
               aria-label="Gym Welcome Intro"
+              itemProp="description"
             >
-              <h2 className="text-white text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
+              <h1 className="text-white text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 Welcome to Elite Gym
-              </h2>
+              </h1>
               <p className="text-lg text-gray-200 font-semibold max-w-xl text-center">
                 <span className="font-bold text-red-600">*</span>Serious fitness starts here.<span className="font-bold text-red-600">*</span> Elite Gym gives you access to world-class trainers, next-gen equipment, and a transformation-first environment where clients crush their goals daily.
               </p>
             </section>
-            <Suspense fallback={<div className="w-full h-32 flex items-center justify-center"><span className="text-white font-bold animate-pulse text-lg">Loading…</span></div>}>
+            <Suspense fallback={Loader}>
               <OwnerCard />
             </Suspense>
-            <Suspense fallback={<div className="w-full h-32 flex items-center justify-center"><span className="text-white font-bold animate-pulse text-lg">Loading…</span></div>}>
+            <Suspense fallback={Loader}>
               <TransformationGrid />
             </Suspense>
-            <Suspense fallback={<div className="w-full h-32 flex items-center justify-center"><span className="text-white font-bold animate-pulse text-lg">Loading…</span></div>}>
+            <Suspense fallback={Loader}>
               <CTAButtons />
             </Suspense>
           </main>
-        </motion.section>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
