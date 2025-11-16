@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { useIntersectionObserver } from "../hooks/useInterSectionObserverr";
+import { useIntersectionObserver } from "../hooks/useInterSectionObserver";
 
 // Assume this is a route page; for meta tags you should use React Helmet or Vite plugin-react
 // Example with react-helmet for meta/SEO
